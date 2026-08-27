@@ -746,7 +746,7 @@ export default function Portfolio() {
             <div
               className={
                 "rounded-[2rem] bg-white p-7 shadow-md ring-1 ring-brand-100" +
-                (certificates.length > 0 ? "" : " mx-auto w-full max-w-xl")
+                (certificates.length > 0 ? "" : " w-full max-w-xl")
               }
             >
               <h3 className="mb-7 font-display text-sm font-semibold uppercase tracking-widest text-slate-400">
