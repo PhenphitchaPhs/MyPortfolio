@@ -45,7 +45,7 @@ const profile = {
   location: "พะเยา, ประเทศไทย",
   email: "phenphitcha4848@gmail.com",
   github: "https://github.com/PhenphitchaPhs",
-  linkedin: "https://www.linkedin.com/in/phenphitcha-phaisan-30b5a642b/",
+  linkedin: "", // ปิดปุ่ม LinkedIn ไว้ชั่วคราว ใส่ลิงก์กลับเข้ามาได้เมื่อแก้ปัญหายืนยันตัวตนเสร็จ
   resume: "/resume.pdf", // วางไฟล์ resume.pdf ไว้ในโฟลเดอร์ public
   about: [
     "นักศึกษาสาขาวิศวกรรมซอฟต์แวร์ มหาวิทยาลัยพะเยา สนใจงานประกันคุณภาพซอฟต์แวร์เป็นหลัก เคยออกแบบ Test Case ให้ระบบจัดการหอพักตั้งแต่ก่อนทีมเริ่มเขียนโค้ด และเขียนชุดทดสอบอัตโนมัติด้วย Playwright, Robot Framework และ Selenium",
@@ -192,6 +192,8 @@ const projects = [
     ],
     tags: ["Hono", "Cloudflare D1", "Vue 3", "Manual Testing"],
     link: "https://project-or-room.vercel.app",
+    repo: "https://github.com/PhenphitchaPhs/Project-OR-Room", // TODO: ใส่ลิงก์ repo จริงของโปรเจกต์นี้
+    note: "ระบบต้องเข้าสู่ระบบก่อนถึงจะเห็นข้างใน ลองใช้บัญชีทดสอบ: อีเมล qa.test01@exmple.com / รหัสผ่าน 123456**",
   },
     {
     title: "E2E Testing — Practice Software Testing",
@@ -343,6 +345,36 @@ function TimelineItem({ item }) {
   );
 }
 
+/* ปุ่มอีเมล — คลิกแล้วพยายามเปิดโปรแกรมเมลด้วย mailto ปกติ
+   แต่ถ้าเครื่องคนดูไม่มีโปรแกรมเมลผูกไว้ (มักเกิดกับคนที่ใช้ Gmail ผ่านเว็บ)
+   จะไม่มีอะไรเกิดขึ้นให้เห็นเลย ปุ่มนี้เลยคัดลอกอีเมลให้ด้วยเผื่อไว้
+   แล้วโชว์ข้อความยืนยันเล็กๆ ให้รู้ว่ากดติดแล้ว ไม่ใช่ปุ่มพัง */
+function EmailButton({ email, className, children }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleClick = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(email).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2200);
+      });
+    }
+  };
+
+  return (
+    <span className="relative inline-flex">
+      <a href={`mailto:${email}`} onClick={handleClick} className={className}>
+        {children}
+      </a>
+      {copied && (
+        <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand-800 px-3 py-1.5 text-xs font-medium text-white shadow-lg">
+          คัดลอกอีเมลแล้ว ✓
+        </span>
+      )}
+    </span>
+  );
+}
+
 /* ============================================================
    หน้าเว็บ
    ============================================================ */
@@ -390,12 +422,12 @@ export default function Portfolio() {
             ))}
           </nav>
 
-          <a
-            href={`mailto:${profile.email}`}
+          <EmailButton
+            email={profile.email}
             className="hidden rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-800 md:block"
           >
             ติดต่อฉัน
-          </a>
+          </EmailButton>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -458,12 +490,12 @@ export default function Portfolio() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <a
-                  href={`mailto:${profile.email}`}
+                <EmailButton
+                  email={profile.email}
                   className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-brand-800"
                 >
                   <Mail size={16} /> ติดต่อฉัน
-                </a>
+                </EmailButton>
                 <a
                   href={profile.resume}
                   className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-md ring-1 ring-brand-100 transition hover:-translate-y-0.5 hover:text-brand-600"
@@ -646,16 +678,32 @@ export default function Portfolio() {
                   ))}
                 </div>
 
-                <a
-                  href={p.link}
-                  className="relative mt-6 inline-flex w-fit items-center gap-1.5 font-display text-sm font-semibold text-brand-600"
-                >
-                  ดูรายละเอียด
-                  <ArrowUpRight
-                    size={16}
-                    className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </a>
+                {p.note && (
+                  <p className="relative mt-4 rounded-xl bg-amber-50 px-3.5 py-2.5 text-xs leading-relaxed text-amber-700 ring-1 ring-amber-100">
+                    {p.note}
+                  </p>
+                )}
+
+                <div className="relative mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+                  <a
+                    href={p.link}
+                    className="inline-flex w-fit items-center gap-1.5 font-display text-sm font-semibold text-brand-600"
+                  >
+                    ดูรายละเอียด
+                    <ArrowUpRight
+                      size={16}
+                      className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </a>
+                  {p.repo && (
+                    <a
+                      href={p.repo}
+                      className="inline-flex w-fit items-center gap-1.5 font-display text-sm font-semibold text-slate-500 transition hover:text-brand-600"
+                    >
+                      <Github size={15} /> ดูโค้ด
+                    </a>
+                  )}
+                </div>
               </article>
             ))}
           </div>
@@ -767,12 +815,12 @@ export default function Portfolio() {
             </p>
 
             <div className="relative mt-9 flex flex-wrap justify-center gap-3">
-              <a
-                href={`mailto:${profile.email}`}
+              <EmailButton
+                email={profile.email}
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-600 shadow-lg transition hover:-translate-y-0.5"
               >
                 <Mail size={16} /> {profile.email}
-              </a>
+              </EmailButton>
               <a
                 href={profile.github}
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white ring-2 ring-white/40 transition hover:-translate-y-0.5 hover:bg-white/10"
