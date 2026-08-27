@@ -212,29 +212,6 @@ const projects = [
   },
 ];
 
-/* กิจกรรมและการเรียนรู้ — ไม่ใช่ประวัติการทำงาน ใส่สิ่งที่ทำระหว่างเรียนได้เลย */
-const activities = [
-  {
-    period: "2568",
-    title: "โปรเจคกลุ่ม — ระบบจัดการหอพัก",
-    org: "มหาวิทยาลัยพะเยา",
-    points: [
-      "รับหน้าที่ออกแบบและดูแลเอกสาร Test Case ของทีม",
-      "ทำงานจากดีไซน์ Figma ร่วมกับเพื่อนตั้งแต่ก่อนเริ่มพัฒนา",
-    ],
-  },
-  {
-    period: "2568",
-    title: "วิชา Fundamentals of AI",
-    org: "มหาวิทยาลัยพะเยา",
-    points: [
-      "สร้าง workflow อัตโนมัติด้วย n8n ทั้ง AI content generator และแชตบอต",
-      "เขียนโปรแกรมตรวจจับอารมณ์จากใบหน้าด้วย OpenCV และ Python",
-      "นำเครื่องมือ AI มาช่วยงานทดสอบ เช่น ช่วยร่างสคริปต์ก่อนรีวิวเอง",
-    ],
-  },
-];
-
 const education = [
   {
     period: "2567 — ปัจจุบัน (กำลังศึกษา)",
@@ -755,12 +732,23 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* ---------- Experience & Education ---------- */}
+        {/* ---------- Education ---------- */}
         <section id="experience" className="scroll-mt-28 py-20">
-          <SectionHeading kicker="Learning" title="การศึกษาและกิจกรรม" />
+          <SectionHeading kicker="Learning" title="การศึกษา" />
 
-          <div className="grid gap-10 sm:grid-cols-2">
-            <div className="rounded-[2rem] bg-white p-7 shadow-md ring-1 ring-brand-100">
+          <div
+            className={
+              certificates.length > 0
+                ? "grid gap-10 sm:grid-cols-2"
+                : "grid gap-10"
+            }
+          >
+            <div
+              className={
+                "rounded-[2rem] bg-white p-7 shadow-md ring-1 ring-brand-100" +
+                (certificates.length > 0 ? "" : " mx-auto w-full max-w-xl")
+              }
+            >
               <h3 className="mb-7 font-display text-sm font-semibold uppercase tracking-widest text-slate-400">
                 การศึกษา
               </h3>
@@ -769,17 +757,7 @@ export default function Portfolio() {
               ))}
             </div>
 
-            <div className="space-y-6">
-              <div className="rounded-[2rem] bg-white p-7 shadow-md ring-1 ring-brand-100">
-                <h3 className="mb-7 font-display text-sm font-semibold uppercase tracking-widest text-slate-400">
-                  กิจกรรมและการเรียนรู้
-                </h3>
-                {activities.map((e) => (
-                  <TimelineItem key={e.title} item={e} />
-                ))}
-              </div>
-
-              {certificates.length > 0 && (
+            {certificates.length > 0 && (
               <div className="rounded-[2rem] bg-white p-7 shadow-md ring-1 ring-brand-100">
                 <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-widest text-slate-400">
                   คอร์สที่เรียน / ใบรับรอง
@@ -800,8 +778,7 @@ export default function Portfolio() {
                   ))}
                 </ul>
               </div>
-              )}
-            </div>
+            )}
           </div>
         </section>
 
