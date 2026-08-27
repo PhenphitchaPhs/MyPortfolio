@@ -215,7 +215,8 @@ const projects = [
 const education = [
   {
     period: "2567 — ปัจจุบัน (กำลังศึกษา)",
-    title: "คณะเทคโนโลยีสารสนเทศและการสื่อสาร สาขาวิศวกรรมซอฟต์แวร์",
+    title: "คณะเทคโนโลยีสารสนเทศและการสื่อสาร",
+    subtitle: "สาขาวิศวกรรมซอฟต์แวร์",
     org: "มหาวิทยาลัยพะเยา",
     points: ["เกรดเฉลี่ย 3.20"],
   },
@@ -309,6 +310,11 @@ function TimelineItem({ item }) {
       <h4 className="mt-1.5 font-display text-lg font-semibold text-brand-800">
         {item.title}
       </h4>
+      {item.subtitle && (
+        <p className="mt-0.5 text-sm font-medium text-brand-600">
+          {item.subtitle}
+        </p>
+      )}
       <p className="text-sm text-slate-500">{item.org}</p>
       <ul className="mt-3 space-y-2">
         {item.points.map((p) => (
