@@ -38,10 +38,10 @@ const profile = {
   initials: "PP", // ตัวย่อที่จะโชว์ในวงกลม ถ้าไม่ใส่รูป
   photo: myPhoto, // ใส่ path รูป เช่น "/me.jpg" (วางไฟล์ในโฟลเดอร์ public) เว้นว่างไว้จะโชว์ตัวย่อแทน
   role: "นักศึกษาวิศวกรรมซอฟต์แวร์ · Software Tester Intern",
-  headlineTop: "เขียนโปรแกรมได้",
+  headlineTop: "ใช้ AI สร้างได้",
   headlineHighlight: "ทดสอบเป็น",
   tagline:
-    "นักศึกษาวิศวกรรมซอฟต์แวร์ที่โฟกัสงานทดสอบซอฟต์แวร์ ชอบออกแบบ Test Case ให้อ่านแล้วทำตามได้จริง และอ่านโค้ดเป็น จึงตามหาต้นตอของบั๊กได้ไม่ใช่แค่รายงานอาการ",
+    "นักศึกษาวิศวกรรมซอฟต์แวร์ที่โฟกัสงานทดสอบซอฟต์แวร์ ชอบออกแบบ Test Case ให้อ่านแล้วทำตามได้จริง ใช้ AI ช่วยสร้างระบบและสคริปต์ทดสอบ แล้วลงมือทดสอบเองอย่างละเอียดก่อนสรุปผลทุกครั้ง",
   location: "พะเยา, ประเทศไทย",
   email: "phenphitcha4848@gmail.com",
   github: "https://github.com/PhenphitchaPhs",
@@ -49,7 +49,7 @@ const profile = {
   resume: "/resume.pdf", // วางไฟล์ resume.pdf ไว้ในโฟลเดอร์ public
   about: [
     "นักศึกษาสาขาวิศวกรรมซอฟต์แวร์ มหาวิทยาลัยพะเยา สนใจงานประกันคุณภาพซอฟต์แวร์เป็นหลัก เคยออกแบบ Test Case ให้ระบบจัดการหอพักตั้งแต่ก่อนทีมเริ่มเขียนโค้ด และเขียนชุดทดสอบอัตโนมัติด้วย Playwright, Robot Framework และ Selenium",
-    "เขียนโปรแกรมเป็น ทั้ง TypeScript, Python และ Vue 3 ซึ่งช่วยให้เข้าใจว่าระบบพังตรงไหนได้บ้าง และเขียนสคริปต์ทดสอบที่เชื่อถือได้ กำลังมองหาที่ฝึกงานตำแหน่ง Software Tester เพื่อเรียนรู้การทำงานของทีม QA จริง",
+    "ใช้ AI ช่วยเขียนโค้ดเป็นหลักในหลายภาษา ทั้ง TypeScript, Python และ Vue 3 แล้วโฟกัสความพยายามของตัวเองไปที่การออกแบบเคสทดสอบ รันทดสอบจริง และเปรียบเทียบผลลัพธ์กับสิ่งที่คาดหวังอย่างละเอียด กำลังมองหาที่ฝึกงานตำแหน่ง Software Tester / QA เพื่อเรียนรู้การทำงานของทีมจริง",
   ],
 };
 
@@ -99,7 +99,8 @@ const skills = [
     items: ["SDLC & STLC", "Bug Tracking", "Version Control", "CI/CD"],
   },
   {
-    group: "ทักษะพัฒนาที่ใช้หนุนงานทดสอบ",
+    group: "เครื่องมือที่เคยใช้งานร่วมกับ AI",
+    note: "ใช้ AI ช่วยเขียนโค้ดเป็นหลัก แล้วโฟกัสที่การทดสอบและตรวจสอบผลลัพธ์เอง",
     accent: "c",
     items: [
       "TypeScript / JavaScript",
@@ -728,6 +729,11 @@ export default function Portfolio() {
                     {g.group}
                   </h3>
                 </div>
+                {g.note && (
+                  <p className="-mt-2 mb-4 text-xs leading-relaxed text-slate-400">
+                    {g.note}
+                  </p>
+                )}
                 <div className="flex flex-wrap gap-2">
                   {g.items.map((s) => (
                     <Pill key={s}>{s}</Pill>
