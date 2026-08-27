@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans Thai", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Kanit", "IBM Plex Sans Thai", sans-serif;
+
+  /* ---- พาเลตต์ 4 สี แก้ตรงนี้ที่เดียวเปลี่ยนทั้งเว็บ ---- */
+  --color-brand-50: #e3f2fd;
+  --color-brand-100: #e3f2fd;
+  --color-brand-200: #90caf9;
+  --color-brand-400: #90caf9;
+  --color-brand-500: #2196f3;
+  --color-brand-600: #2196f3;
+  --color-brand-800: #0d47a1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+}
