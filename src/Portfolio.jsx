@@ -193,7 +193,7 @@ const projects = [
     ],
     tags: ["Hono", "Cloudflare D1", "Vue 3", "Manual Testing"],
     link: "https://project-or-room.vercel.app",
-    repo: "https://github.com/USERNAME/or-room", // TODO: ใส่ลิงก์ repo จริงของโปรเจกต์นี้
+    repo: "https://github.com/PhenphitchaPhs/Project-OR-Room", // TODO: ใส่ลิงก์ repo จริงของโปรเจกต์นี้
     note: "ระบบต้องเข้าสู่ระบบก่อนถึงจะเห็นข้างใน ลองใช้บัญชีทดสอบ: อีเมล qa.test01@exmple.com / รหัสผ่าน 123456**",
   },
     {
