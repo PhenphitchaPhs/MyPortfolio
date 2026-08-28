@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Personal files (wallpapers, images, resume, LinkedIn draft)
+**/WALLPAPER*
+**/Wallpaper*
+**/พระพิฆเนศ.jpg
+**/รูปนิสิต.jpg
+LinkedIn-เนื้อหาพร้อมวาง.md
+Phenphitcha_Phaisan_Resume_QA.docx
