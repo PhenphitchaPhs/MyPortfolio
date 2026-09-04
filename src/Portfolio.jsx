@@ -1,5 +1,6 @@
 import { useState } from "react";
 import myPhoto from "./assets/รูปนิสิต.jpg";
+import orchestratorAward from "./assets/ผลงาน.jpg";
 import {
   Mail,
   FileText,
@@ -181,12 +182,13 @@ const projects = [
     link: "https://github.com/PhenphitchaPhs/student-api-hono",
   },
   {
-    title: "OR-Room — ระบบจัดคิวห้องผ่าตัด",
+    title: "ORchestrator — ระบบบริหารจัดการคิวห้องผ่าตัด",
     subtitle: "โปรเจคกลุ่ม · กำลังพัฒนา",
     type: "Development + Manual Testing",
     summary:
-      "ร่วมทีมพัฒนาเว็บแอปจัดคิวห้องผ่าตัด รับผิดชอบ Backend ทั้งหมดคนเดียวและทำ Frontend ประมาณ 30–40% แล้วทดสอบฟีเจอร์ใหม่บนระบบจริงด้วยตัวเองก่อนส่งงาน",
+      "ร่วมทีมพัฒนาเว็บแอปบริหารจัดการคิวห้องผ่าตัด และได้รับรางวัลอันดับที่ 3 จากการนำเสนอผลงาน CQI Oral Presentation ของโรงพยาบาลลำปาง",
     highlights: [
+      "ได้รับรางวัลที่ 3 จากผลงาน CQI เรื่อง ORchestrator: Real-Time AutoCalc Schedule to Optimize OR Utilization",
       "ดูแล Backend ทั้งหมดด้วย Hono และ Cloudflare D1 รวมถึงการเข้าสู่ระบบแยกสิทธิ์และการจัดลำดับคิวผู้ป่วยอัตโนมัติ",
       "ทำ Frontend ราว 30–40% ด้วย Vue 3 และ TypeScript",
       "ทดสอบฟีเจอร์ใหม่บนระบบจริงแบบ Manual เพื่อหาและแก้บั๊ก แล้วตั้ง GitHub Actions ให้รันทุกครั้งที่ Push",
@@ -708,6 +710,38 @@ export default function Portfolio() {
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        {/* ---------- Award ---------- */}
+        <section className="scroll-mt-28 py-10">
+          <SectionHeading
+            kicker="Achievement"
+            title="รางวัลและผลงานเด่น"
+            note="ผลงาน ORchestrator ได้รับรางวัลที่ 3 จากการคัดเลือกผลงานพัฒนาคุณภาพ CQI"
+          />
+
+          <div className="grid items-center gap-8 rounded-[2rem] bg-white p-6 shadow-md ring-1 ring-brand-100 sm:grid-cols-2 sm:p-8">
+            <div>
+              <span className="inline-flex rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700 ring-1 ring-amber-100">
+                รางวัลที่ 3 · CQI Oral Presentation
+              </span>
+              <h3 className="mt-4 font-display text-2xl font-semibold text-brand-800">
+                ORchestrator: Real-Time AutoCalc Schedule to Optimize OR Utilization
+              </h3>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                ผลงานระบบบริหารจัดการคิวห้องผ่าตัดที่ร่วมพัฒนา ได้รับรางวัลที่ 3
+                จากการนำเสนอผลงาน CQI Oral Presentation ของโรงพยาบาลลำปาง
+                สะท้อนความสามารถในการพัฒนาระบบและปรับปรุงกระบวนการทำงานให้มีประสิทธิภาพมากขึ้น
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-2xl bg-brand-50 p-2 ring-1 ring-brand-100">
+              <img
+                src={orchestratorAward}
+                alt="ประกาศผลรางวัล CQI ที่ ORchestrator ได้รับรางวัลที่ 3"
+                className="h-auto max-h-[560px] w-full rounded-xl object-contain"
+              />
+            </div>
           </div>
         </section>
 
